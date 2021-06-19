@@ -20,5 +20,5 @@ while True:
         myArray[j] = 1
         i += 1
         j -= 1
-        
+
 print("  Array after ordering : {}\n".format(myArray))
