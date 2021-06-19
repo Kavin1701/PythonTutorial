@@ -6,13 +6,12 @@ myList = []   # empty list
 for i in range(n):  # getting the elements
     myList.append(input("  Enter the element "+str(i+1)+": "))
 
-myDict = {}   # empty dictionary
+count = 0
+myList2 = []   # empty list
 for i in myList:   # iterating myList
-    if myDict.get(i) == None:   # not already present in dictionary
-        myDict[i] = 1
-    else:   # already present in dictionary
-        myDict[i] += 1
+    if i not in myList2:   # not already present in myList2
+        myList2.append(i)
+        count += 1
 
-# printing the no. of occurence
-for key,value in myDict.items():
-    print("      "+str(key)+" - "+str(value))
+# printing no. of different elements
+print("No. of different elements : "+str(count))
