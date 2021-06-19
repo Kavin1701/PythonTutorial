@@ -1,24 +1,23 @@
-# an array contain mixture of 0s and 1s.
-# to arrange 0s on one side and 1s on the other.
-
+# ordering of 0's and 1's (Optimised)
 import array as arr
-n = int(input("Enter the number of elements : "))   # n = no. of elements
-myArr = arr.array('i',[])   # empty array
 
-for i in range(n):   # getting the elements
-    myArr.append(int(input("  Enter the element "+str(i+1)+": ")))
+str = input("\nEnter the sequence (containing 0's and 1's) : ")   # getting input as string
+myArray = arr.array("i", [int(s) for s in list(str)])   # converting string to array
+print("  Array before ordering : {}".format(myArray))
 
-print("Array before ordering : "+str(myArr))
+i, j = 0, len(str)-1   # to point the first and last element of array
+while True:
+    if myArray[i] != 1:  # if i not pointing to 1
+        i += 1
 
-countZero = 0   # counter for no. of 0's in array
-for i in range(n):   # counting number of zeros
-    if myArr[i] == 0:
-        countZero += 1
+    if myArray[j] != 0:  # if j not pointing to 0
+        j -= 1
 
-for i in range(n):
-    if i < countZero:   # assigning 0 on one side
-        myArr[i] = 0
-    else:    # assigning 1 on other side
-        myArr[i] = 1
-
-print("Array after ordering : "+str(myArr))
+    if i>j:  # if i points ahead of j
+        break
+    elif myArray[i] == 1 and myArray[j] == 0:    # if i pointing to 1 and j pointing to 0
+        myArray[i] = 0
+        myArray[j] = 1
+        i += 1
+        j -= 1
+print("  Array after ordering : {}\n".format(myArray))
